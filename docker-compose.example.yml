@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  app:
+    image: hello-world
+    container_name: app
+    networks:
+      - elk_elk-network
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://172.23.0.2:5000"
+        syslog-facility: "daemon"
+
+networks:
+  docker-elk_elk-network:
+    external: true
